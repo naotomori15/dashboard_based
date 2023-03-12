@@ -122,7 +122,9 @@ module.exports = {
   deleteProperty: async (req, res) => {
     try {
       const { id } = req.params;
-      const propertyToDelete = await Property.findById({ _id: id }).populate();
+      const propertyToDelete = await Property.findById({ _id: id }).populate(
+        'creator'
+      );
       if (!propertyToDelete) throw new Error('Property Not Found');
       const session = await mongoose.startSession();
       session.startTransaction();
