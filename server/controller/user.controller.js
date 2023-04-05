@@ -27,7 +27,7 @@ module.exports = {
   getUserInfoByID: async (req, res) => {
     try {
       const { id } = req.params;
-      const users = await User.findOne({ _id: id }).populate('allProperties');
+      const users = await User.findOne({ _id: id }).populate('allProducts');
       if (users) {
         res.status(200).json(users);
       } else {

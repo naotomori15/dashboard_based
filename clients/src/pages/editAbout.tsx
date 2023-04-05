@@ -1,12 +1,11 @@
 import { useGetIdentity } from '@pankod/refine-core';
 import React, { useState } from 'react';
 import { FieldValues, useForm } from '@pankod/refine-react-hook-form';
-import Form from 'components/common/Form';
-
 import Swal from 'sweetalert2';
-export default function EditProperties() {
+import FormAbout from 'components/common/FormAbout';
+export default function EditAbout() {
   const { data: user } = useGetIdentity();
-  const [propertyImage, setPropertyImage] = useState({ name: '', url: '' });
+  const [aboutImage, setAboutImage] = useState({ name: '', url: '' });
   const {
     refineCore: { onFinish, formLoading },
     register,
@@ -21,16 +20,16 @@ export default function EditProperties() {
         fileReader.readAsDataURL(readFile);
       });
     reader(file).then((result: string) =>
-      setPropertyImage({ name: file?.name, url: result })
+      setAboutImage({ name: file?.name, url: result })
     );
   };
   const onFinishHandler = async (data: FieldValues) => {
-    if (!propertyImage.name) Swal.fire('Please Upload property Image');
+    if (!aboutImage.name) Swal.fire('Please Reupload About Image');
 
-    await onFinish({ ...data, photo: propertyImage.url, email: user.email });
+    await onFinish({ ...data, photo: aboutImage.url, email: user.email });
   };
   return (
-    <Form
+    <FormAbout
       type='Edit'
       register={register}
       onFinish={onFinish}
@@ -38,6 +37,6 @@ export default function EditProperties() {
       handleSubmit={handleSubmit}
       handleImageChange={handleImageChange}
       onFinishHandler={onFinishHandler}
-      propertyImage={propertyImage}></Form>
+      image={aboutImage}></FormAbout>
   );
 }

@@ -1,3 +1,3 @@
-import carMania from './logo.svg';
+import logo from './logo.svg';
 
-export default carMania;
+export default logo;

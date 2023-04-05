@@ -3,14 +3,7 @@ import { Box, Typography, Stack } from '@pankod/refine-mui';
 import { useParams, useNavigate } from '@pankod/refine-react-router-v6';
 import React, { useState } from 'react';
 
-import {
-  ChatBubble,
-  Delete,
-  Edit,
-  Phone,
-  Place,
-  Star,
-} from '@mui/icons-material';
+import { ChatBubble, Delete, Edit, Phone, Place } from '@mui/icons-material';
 import { CustomButton } from 'components';
 import Swal from 'sweetalert2';
 import BackdropLoader from 'components/common/BackdropLoader';
@@ -23,18 +16,18 @@ function checkImage(url: any) {
   return img.width !== 0 && img.height !== 0;
 }
 
-export default function PropertiDetails() {
+export default function HeroDetails() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-  const { data: user } = useGetIdentity();
   const { id } = useParams();
   const { mutate } = useDelete();
+  const { data: user } = useGetIdentity();
   const { queryResult } = useShow();
 
   const { data, isLoading, isError, status } = queryResult;
 
-  const propertyDetails = data?.data ?? {};
-  const isCurrentUser = user?.email === propertyDetails?.creator?.email;
+  const heroDetails = data?.data ?? {};
+  const isCurrentUser = user?.email === heroDetails?.creator?.email;
   const handleDeleteProperty = () => {
     Swal.fire({
       title: 'Are you sure?',
@@ -44,20 +37,20 @@ export default function PropertiDetails() {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!',
-    }).then((result) => {
+    }).then((result: any) => {
       if (result.isConfirmed) {
         setOpen(result.isConfirmed);
         console.log(open);
         mutate(
           {
-            resource: 'properties',
+            resource: 'hero',
             id: id as string,
           },
 
           {
             onSuccess: () => {
               Swal.fire('Deleted!', 'Your Item has been deleted.', 'success');
-              navigate('/properties');
+              navigate('/hero');
             },
             onError: (error) => {
               setOpen(false);
@@ -94,107 +87,12 @@ export default function PropertiDetails() {
             flex={1}
             maxWidth={764}>
             <img
-              src={propertyDetails.photo}
-              alt={propertyDetails.title}
+              src={heroDetails.photo}
+              alt={heroDetails.title}
               height={546}
               style={{ objectFit: 'cover', borderRadius: '10px' }}
               className='property_details-img'
             />
-            <Box mt='15px'>
-              <Stack
-                direction='row'
-                justifyContent='space-between'
-                flexWrap='wrap'
-                alignItems='center'>
-                <Typography
-                  fontSize={18}
-                  fontWeight={500}
-                  color='#11142D'
-                  textTransform='capitalize'>
-                  {propertyDetails.propertyType}
-                </Typography>
-                <Box>
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <Star
-                      key={`star-${star}`}
-                      sx={{ color: '#f2c94c' }}
-                    />
-                  ))}
-                </Box>
-              </Stack>
-              <Stack
-                direction='row'
-                justifyContent='space-between'
-                flexWrap='wrap'
-                alignItems='center'>
-                <Box>
-                  <Typography
-                    fontSize={22}
-                    fontWeight={600}
-                    color='#11142D'
-                    textTransform='capitalize'>
-                    {propertyDetails.title}
-                  </Typography>
-                  <Stack
-                    mt={0.5}
-                    direction='row'
-                    justifyContent='center'
-                    alignItems='center'
-                    gap={0.5}>
-                    <Place sx={{ color: '#808191' }} />
-                    <Typography
-                      fontSize={14}
-                      color='#808191'
-                      textTransform='capitalize'>
-                      {propertyDetails.location}
-                    </Typography>
-                  </Stack>
-                </Box>
-                <Box>
-                  <Typography
-                    fontSize={16}
-                    fontWeight={500}
-                    color='#11142D'
-                    mt='10px'>
-                    Price
-                  </Typography>
-                  <Stack
-                    direction='row'
-                    alignItems='flex-end'
-                    gap={1}>
-                    <Typography
-                      fontSize={24}
-                      fontWeight={600}
-                      color='#20a6a0'>
-                      ${propertyDetails.price}
-                    </Typography>
-                    <Typography
-                      fontSize={14}
-                      mb={0.5}
-                      color='#808191'>
-                      /DAY
-                    </Typography>
-                  </Stack>
-                </Box>
-              </Stack>
-              <Stack
-                mt='25px'
-                direction='column'
-                gap='10px'>
-                <Typography
-                  fontSize={18}
-                  fontWeight={600}
-                  color='#11142D'>
-                  Description
-                </Typography>
-                <Typography
-                  fontSize={14}
-                  fontWeight={500}
-                  color='#808191'>
-                  {propertyDetails.description}
-                </Typography>
-              </Stack>
-            </Box>
           </Box>
           <Box
             width='100%'
@@ -218,11 +116,11 @@ export default function PropertiDetails() {
                 textAlign='center'>
                 <img
                   src={
-                    checkImage(propertyDetails.creator.avatar)
-                      ? propertyDetails.creator.avatar
+                    checkImage(heroDetails.creator.avatar)
+                      ? heroDetails.creator.avatar
                       : 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png'
                   }
-                  alt={propertyDetails.creator.name}
+                  alt={heroDetails.creator.name}
                   width={90}
                   height={90}
                   style={{ borderRadius: '100%', objectFit: 'cover' }}
@@ -232,7 +130,7 @@ export default function PropertiDetails() {
                     fontSize={18}
                     fontWeight={600}
                     color='#11142D'>
-                    {propertyDetails.creator.name}
+                    {heroDetails.creator.name}
                   </Typography>
                   <Typography
                     mt='5px'
@@ -255,7 +153,7 @@ export default function PropertiDetails() {
                   fontSize={16}
                   fontWeight={600}
                   color='#11142D'>
-                  {propertyDetails.creator.allProperties.length} Properties
+                  {heroDetails.creator.allProducts.length} Hero
                 </Typography>
               </Stack>
               <Stack
@@ -272,7 +170,7 @@ export default function PropertiDetails() {
                   icon={!isCurrentUser ? <ChatBubble /> : <Edit />}
                   handleClick={() => {
                     if (isCurrentUser) {
-                      navigate(`/properties/edit/${propertyDetails._id}`);
+                      navigate(`/hero/edit/${heroDetails._id}`);
                     }
                   }}
                 />
@@ -289,6 +187,61 @@ export default function PropertiDetails() {
               </Stack>
             </Stack>
           </Box>
+        </Box>
+        <Box mt='15px'>
+          <Stack>
+            <Box>
+              <Typography
+                fontSize={28}
+                fontWeight={600}
+                color='#11142D'
+                textTransform='capitalize'>
+                {heroDetails.title}
+              </Typography>
+            </Box>
+
+            <Stack
+              mt='25px'
+              direction='column'
+              gap='10px'>
+              <Typography
+                fontSize={24}
+                fontWeight={600}
+                color='#11142D'>
+                Description
+              </Typography>
+              <Typography
+                fontSize={14}
+                fontWeight={500}
+                color='#808191'>
+                {heroDetails.description}
+              </Typography>
+            </Stack>
+
+            <Stack
+              mt='25px'
+              direction='column'
+              gap='10px'>
+              <Typography
+                fontSize={24}
+                fontWeight={600}
+                color='#11142D'>
+                Contacts
+              </Typography>
+              <Typography
+                fontSize={14}
+                fontWeight={500}
+                color='#808191'>
+                No Telepon : +62{heroDetails.telp}
+              </Typography>
+              <Typography
+                fontSize={14}
+                fontWeight={500}
+                color='#808191'>
+                Email : {heroDetails.emailUI}
+              </Typography>
+            </Stack>
+          </Stack>
         </Box>
       </Box>
     </>

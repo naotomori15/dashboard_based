@@ -21,6 +21,6 @@ export default function AgentProperties() {
       name={myProfile.name}
       email={myProfile.email}
       avatar={myProfile.avatar}
-      properties={myProfile.allProperties}></Profile>
+      products={myProfile.allProducts}></Profile>
   );
 }

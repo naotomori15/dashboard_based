@@ -1,4 +1,4 @@
-import { Add, LocationCity } from '@mui/icons-material';
+import { Add } from '@mui/icons-material';
 import { useTable } from '@pankod/refine-core';
 import {
   Box,
@@ -9,13 +9,13 @@ import {
   Typography,
 } from '@pankod/refine-mui';
 import { useNavigate } from '@pankod/refine-react-router-v6';
-import { PropertyCard, CustomButton } from 'components';
+import { ProductCard, CustomButton } from 'components';
 import BackdropLoader from 'components/common/BackdropLoader';
 import CustomErrorComponent from 'components/common/CustomErrorComponent';
 
 import { useMemo } from 'react';
 
-export default function AllProperties() {
+export default function AllProducts() {
   const navigate = useNavigate();
   const {
     tableQueryResult: { data, isLoading, isError },
@@ -29,23 +29,14 @@ export default function AllProperties() {
     setFilters,
   } = useTable();
 
-  const allProperties = data?.data ?? [];
-
-  const currentPrice = sorter.find((item) => item.field === 'price')?.order;
-  const toggleSort = (field: string) => {
-    setSorter([{ field, order: currentPrice === 'asc' ? 'desc' : 'asc' }]);
-  };
+  const allProducts = data?.data ?? [];
+  console.log(allProducts);
   const currentFilterValue = useMemo(() => {
     const logicalFilters = filters.flatMap((item) =>
       'field' in item ? item : []
     );
     return {
       title: logicalFilters.find((item) => item.field === 'title')?.value || '',
-      propertyType:
-        logicalFilters.find((item) => item.field === 'propertyType')?.value ||
-        '',
-      location:
-        logicalFilters.find((item) => item.field === 'location')?.value || '',
     };
   }, [filters]);
 
@@ -64,7 +55,7 @@ export default function AllProperties() {
             fontSize={25}
             fontWeight={700}
             color='#11142D'>
-            {!allProperties.length ? 'No Properties' : 'All Properties'}
+            {!allProducts.length ? 'No Products' : 'All Products'}
           </Typography>
           <Box
             mb={2}
@@ -78,12 +69,6 @@ export default function AllProperties() {
               gap={2}
               flexWrap='wrap'
               mb={{ xs: '20px', sm: 0 }}>
-              <CustomButton
-                title={`Sort Price ${currentPrice === 'asc' ? '↑' : '↓'}`}
-                handleClick={() => toggleSort('price')}
-                backgroundColor='#20a6a0'
-                color='#fcfcfc'
-              />
               <TextField
                 variant='outlined'
                 color='success'
@@ -101,44 +86,6 @@ export default function AllProperties() {
                   ]);
                 }}
               />
-              <Select
-                variant='outlined'
-                color='success'
-                displayEmpty
-                required
-                inputProps={{ 'aria-label': 'Without label' }}
-                defaultValue=''
-                value={currentFilterValue.propertyType}
-                onChange={(e) => {
-                  setFilters(
-                    [
-                      {
-                        field: 'propertyType',
-                        operator: 'eq',
-                        value: e.target.value,
-                      },
-                    ],
-                    'replace'
-                  );
-                }}>
-                <MenuItem value=''>All</MenuItem>
-                {[
-                  'Apartement',
-                  'Villa',
-                  'FarmHouse',
-                  'Condos',
-                  'Townhouse',
-                  'Duplex',
-                  'Studio',
-                  'Chalet',
-                ].map((type) => (
-                  <MenuItem
-                    key={type}
-                    value={type.toLowerCase()}>
-                    {type}
-                  </MenuItem>
-                ))}
-              </Select>
             </Box>
           </Box>
         </Stack>
@@ -149,8 +96,8 @@ export default function AllProperties() {
         justifyContent='space-between'
         alignItems='center'>
         <CustomButton
-          title='Add Property'
-          handleClick={() => navigate('/properties/create')}
+          title='Add Products'
+          handleClick={() => navigate('/products/create')}
           backgroundColor='#20a6a0'
           icon={<Add />}
           color='#fff'
@@ -158,22 +105,19 @@ export default function AllProperties() {
       </Stack>
       <Box
         mt='20px'
-        sx={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
-        {allProperties.length === 0
-          ? 'No Properties'
-          : allProperties.map((property) => (
-              <PropertyCard
-                key={property._id}
-                id={property._id}
-                title={property.title}
-                price={property.price}
-                propertyType={property.propertyType}
-                location={property.location}
-                photo={property.photo}
+        sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+        {allProducts.length === 0
+          ? 'No Products'
+          : allProducts.map((product) => (
+              <ProductCard
+                key={product._id}
+                id={product._id}
+                title={product.title}
+                photo={product.photo}
               />
             ))}
       </Box>
-      {allProperties.length > 0 && (
+      {allProducts.length > 0 && (
         <Box
           display='flex'
           gap={2}

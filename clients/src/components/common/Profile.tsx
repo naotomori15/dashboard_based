@@ -2,7 +2,7 @@ import { Place, Phone, Email } from '@mui/icons-material';
 import { Box, Typography, Stack } from '@pankod/refine-mui';
 import { ProfileProps, PropertyProps } from 'interfaces/common';
 import React from 'react';
-import PropertyCard from './PropertyCard';
+import PropertyCard from './ProductCard';
 function checkImage(url: any) {
   let img = new Image();
   img.src = url;
@@ -13,7 +13,7 @@ export default function Profile({
   name,
   avatar,
   email,
-  properties,
+  products,
 }: ProfileProps) {
   return (
     <Box>
@@ -75,13 +75,14 @@ export default function Profile({
                   <Typography
                     fontSize={22}
                     fontWeight={600}
-                    color='#11142D'>
+                    color='#11142D'
+                    style={{ textTransform: 'capitalize' }}>
                     {name}
                   </Typography>
                   <Typography
                     fontSize={16}
                     color='#808191'>
-                    Realestate Agent
+                    Ads Agent
                   </Typography>
                 </Stack>
 
@@ -104,7 +105,7 @@ export default function Profile({
                       <Typography
                         fontSize={14}
                         color='#11142D'>
-                        4517 Washington Ave. Manchaster, Kentucky 39495
+                        DKI Jakarta, Indonesia
                       </Typography>
                     </Box>
                   </Stack>
@@ -114,30 +115,6 @@ export default function Profile({
                     flexWrap='wrap'
                     gap='20px'
                     pb={4}>
-                    <Stack
-                      flex={1}
-                      gap='15px'>
-                      <Typography
-                        fontSize={14}
-                        fontWeight={500}
-                        color='#808191'>
-                        Phone Number
-                      </Typography>
-                      <Box
-                        display='flex'
-                        flexDirection='row'
-                        alignItems='center'
-                        gap='10px'>
-                        <Phone sx={{ color: '#11142D' }} />
-                        <Typography
-                          fontSize={14}
-                          color='#11142D'
-                          noWrap>
-                          +0123 456 7890
-                        </Typography>
-                      </Box>
-                    </Stack>
-
                     <Stack
                       flex={1}
                       gap='15px'>
@@ -168,7 +145,7 @@ export default function Profile({
         </Box>
       </Box>
 
-      {properties.length > 0 && (
+      {products.length > 0 && (
         <Box
           mt={2.5}
           borderRadius='15px'
@@ -178,7 +155,7 @@ export default function Profile({
             fontSize={18}
             fontWeight={600}
             color='#11142D'>
-            {type} Properties
+            {type} Products
           </Typography>
 
           <Box
@@ -188,15 +165,12 @@ export default function Profile({
               flexWrap: 'wrap',
               gap: 2.5,
             }}>
-            {properties?.map((property: PropertyProps) => (
+            {products?.map((product: PropertyProps) => (
               <PropertyCard
-                key={property._id}
-                id={property._id}
-                title={property.title}
-                location={property.location}
-                price={property.price}
-                photo={property.photo}
-                propertyType={property.propertyType}
+                key={product._id}
+                id={product._id}
+                title={product.title}
+                photo={product.photo}
               />
             ))}
           </Box>

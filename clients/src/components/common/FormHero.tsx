@@ -16,7 +16,7 @@ import CustomButton from './CustomButton';
 
 import BackdropLoader from './BackdropLoader';
 
-export default function Form({
+export default function FormHero({
   type,
   register,
   handleSubmit,
@@ -32,7 +32,7 @@ export default function Form({
         fontSize={26}
         fontWeight={700}
         color='#11142D'>
-        {type} a product
+        {type} a hero
       </Typography>
       <Box
         mt={2.5}
@@ -56,13 +56,14 @@ export default function Form({
                 fontSize: 16,
                 color: '#11142D',
               }}>
-              Enter product name
+              Enter hero title
             </FormHelperText>
             <TextField
               fullWidth
               required
               id='outlined-basic'
               color='success'
+              placeholder='your brand'
               variant='outlined'
               {...register('title', {
                 required: true,
@@ -77,7 +78,7 @@ export default function Form({
                 fontSize: 16,
                 color: '#11142D',
               }}>
-              Enter product description
+              Enter hero description
             </FormHelperText>
             <TextareaAutosize
               minRows={5}
@@ -97,6 +98,52 @@ export default function Form({
               })}
             />
           </FormControl>
+          <FormControl>
+            <FormHelperText
+              sx={{
+                fontWeight: 500,
+                margin: '10px 0',
+                fontSize: 16,
+                color: '#11142D',
+              }}>
+              Enter hero email
+            </FormHelperText>
+            <TextField
+              fullWidth
+              required
+              type='email'
+              id='outlined-basic'
+              color='success'
+              placeholder='johndoe@gmail.com'
+              variant='outlined'
+              {...register('emailUI', {
+                required: true,
+              })}
+            />
+          </FormControl>
+          <FormControl>
+            <FormHelperText
+              sx={{
+                fontWeight: 500,
+                margin: '10px 0',
+                fontSize: 16,
+                color: '#11142D',
+              }}>
+              Enter hero number
+            </FormHelperText>
+            <TextField
+              fullWidth
+              required
+              type='number'
+              id='outlined-basic'
+              color='success'
+              placeholder='8124232432'
+              variant='outlined'
+              {...register('telp', {
+                required: true,
+              })}
+            />
+          </FormControl>
 
           <Stack
             direction='column'
@@ -111,7 +158,7 @@ export default function Form({
                 fontWeight={500}
                 my='10px'
                 fontSize={16}>
-                Product Photo
+                Hero Photo
               </Typography>
               <Button
                 component='label'

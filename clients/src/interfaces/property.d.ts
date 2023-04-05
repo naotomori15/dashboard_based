@@ -13,11 +13,21 @@ export interface FormValues {
     price: number | undefined,
 }
 
-export interface PropertyCardProps {
+export interface ProductCardProps {
   id?: BaseKey | undefined,
   title: string,
-  location: string,
-  price: string,
   photo: string,
-  propertyType: string
+}
+export interface HeroCardProps {
+  id?: BaseKey | undefined,
+  title: string,
+  photo: string,
+  telp : number,
+  email : string,
+  description : string
+}
+export interface AboutCardProps {
+  id?: BaseKey | undefined,
+  description: string,
+  photo: string,
 }

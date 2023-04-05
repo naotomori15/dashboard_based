@@ -28,14 +28,16 @@ export default function Agents() {
           gap: '20px',
           backgroundColor: '#fcfcfc',
         }}>
-        {allAgents.map((agent) => (
+        {allAgents?.map((agent) => (
           <AgentCards
             key={agent._id}
             id={agent._id}
             name={agent.name}
             email={agent.email}
             avatar={agent.avatar}
-            noOfProperties={agent.allProperties.length}
+            noOfProduct={agent.allProducts.length}
+            noOfAbout={agent.allAbouts.length}
+            noOfHero={agent.allHeros.length}
           />
         ))}
       </Box>

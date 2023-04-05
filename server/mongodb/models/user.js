@@ -13,10 +13,22 @@ const UsersSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  allProperties: [
+  allProducts: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Property',
+      ref: 'Product',
+    },
+  ],
+  allAbouts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'About',
+    },
+  ],
+  allHeros: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Hero',
     },
   ],
 });

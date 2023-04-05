@@ -4,9 +4,10 @@ import PropertyRefferal from './charts/PropertyRefferal';
 import TotalRevenue from './charts/TotalRevenue';
 import CustomButton from './common/CustomButton';
 import Profile from './common/Profile';
-import PropertyCard from './common/PropertyCard';
+import ProductCard from './common/ProductCard';
 import TopAgents from './home/TopAgents';
-
+import HeroCard from './common/HeroCard';
+import FormHero from './common/FormHero';
 export {
   AgentCards,
   PieChart,
@@ -14,6 +15,8 @@ export {
   TotalRevenue,
   CustomButton,
   Profile,
-  PropertyCard,
+  ProductCard,
   TopAgents,
+  HeroCard,
+  FormHero,
 };

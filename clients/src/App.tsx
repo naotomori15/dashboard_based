@@ -11,10 +11,10 @@ import {
 } from '@pankod/refine-mui';
 import {
   AccountCircleOutlined,
-  ChatBubbleOutline,
   PeopleAltOutlined,
-  StarOutlineRounded,
-  VillaOutlined,
+  Description,
+  ShoppingCartCheckout,
+  BurstMode,
 } from '@mui/icons-material';
 import dataProvider from '@pankod/refine-simple-rest';
 import { MuiInferencer } from '@pankod/refine-inferencer/mui';
@@ -28,12 +28,20 @@ import {
   Login,
   Home,
   Agents,
-  editProperties,
-  myProfile,
-  propertiDetails,
-  allProperties,
-  createProperties,
+  editProducts,
+  productDetails,
+  allProducts,
+  createProducts,
   agentProfile,
+  myProfile,
+  allHero,
+  createHero,
+  editHero,
+  allAbout,
+  createAbout,
+  editAbout,
+  AboutDetails,
+  HeroDetails,
 } from 'pages';
 
 const axiosInstance = axios.create();
@@ -57,18 +65,15 @@ function App() {
       // save user to mongoDB
 
       if (profileObj) {
-        const response = await fetch(
-          'https://carmania-dashboard.onrender.com/api/v1/users',
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              name: profileObj.name,
-              email: profileObj.email,
-              avatar: profileObj.picture,
-            }),
-          }
-        );
+        const response = await fetch('http://localhost:8080/api/v1/users', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: profileObj.name,
+            email: profileObj.email,
+            avatar: profileObj.picture,
+          }),
+        });
 
         const data = await response.json();
 
@@ -129,20 +134,34 @@ function App() {
       <GlobalStyles styles={{ html: { WebkitFontSmoothing: 'auto' } }} />
       <RefineSnackbarProvider>
         <Refine
-          dataProvider={dataProvider(
-            'https://carmania-dashboard.onrender.com/api/v1'
-          )}
+          dataProvider={dataProvider('http://localhost:8080/api/v1')}
           notificationProvider={notificationProvider}
           ReadyPage={ReadyPage}
           catchAll={<ErrorComponent />}
           resources={[
             {
-              name: 'properties',
-              list: allProperties,
-              show: propertiDetails,
-              create: createProperties,
-              edit: editProperties,
-              icon: <VillaOutlined />,
+              name: 'products',
+              list: allProducts,
+              show: productDetails,
+              create: createProducts,
+              edit: editProducts,
+              icon: <ShoppingCartCheckout />,
+            },
+            {
+              name: 'hero',
+              list: allHero,
+              show: HeroDetails,
+              create: createHero,
+              edit: editHero,
+              icon: <BurstMode />,
+            },
+            {
+              name: 'about',
+              list: allAbout,
+              show: AboutDetails,
+              create: createAbout,
+              edit: editAbout,
+              icon: <Description />,
             },
             {
               name: 'agents',
@@ -150,16 +169,7 @@ function App() {
               show: agentProfile,
               icon: <PeopleAltOutlined />,
             },
-            {
-              name: 'review',
-              list: Home,
-              icon: <StarOutlineRounded />,
-            },
-            {
-              name: 'message',
-              list: Home,
-              icon: <ChatBubbleOutline />,
-            },
+
             {
               name: 'my-profile',
               options: {

@@ -1,15 +1,14 @@
 import { useGetIdentity } from '@pankod/refine-core';
 import { useForm, FieldValues } from '@pankod/refine-react-hook-form';
 import { useNavigate } from '@pankod/refine-react-router-v6';
-import BackdropLoader from 'components/common/BackdropLoader';
-import Form from 'components/common/Form';
-import React, { useState } from 'react';
+import FormAbout from 'components/common/FormAbout';
+import { useState } from 'react';
 import Swal from 'sweetalert2';
 
-export default function CreateProperties() {
+export default function CreateAbout() {
   const navigate = useNavigate();
   const { data: user } = useGetIdentity();
-  const [propertyImage, setPropertyImage] = useState({ name: '', url: '' });
+  const [aboutImage, setAboutImage] = useState({ name: '', url: '' });
   const {
     refineCore: { onFinish, formLoading },
     register,
@@ -23,23 +22,23 @@ export default function CreateProperties() {
         fileReader.readAsDataURL(readFile);
       });
     reader(file).then((result: string) =>
-      setPropertyImage({ name: file?.name, url: result })
+      setAboutImage({ name: file?.name, url: result })
     );
   };
   const onFinishHandler = async (data: FieldValues) => {
-    if (!propertyImage.name) Swal.fire('Please select a image');
-    await onFinish({ ...data, photo: propertyImage.url, email: user.email });
+    if (!aboutImage.name) Swal.fire('Please select a image');
+    await onFinish({ ...data, photo: aboutImage.url, email: user.email });
   };
 
   return (
     <>
-      <Form
+      <FormAbout
         type='Create'
         register={register}
         onFinish={onFinish}
         formLoading={formLoading}
         handleSubmit={handleSubmit}
-        propertyImage={propertyImage}
+        image={aboutImage}
         handleImageChange={handleImageChange}
         onFinishHandler={onFinishHandler}
       />

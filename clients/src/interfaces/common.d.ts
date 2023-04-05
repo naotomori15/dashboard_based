@@ -19,18 +19,16 @@ export interface ProfileProps {
     name: string,
     avatar: string,
     email: string,
-    properties: Array | undefined
+    products: Array | undefined
 }
 
 export interface PropertyProps {
     _id: string,
     title: string,
     description: string,
-    location: string,
-    price: string,
     photo: string,
     creator: string
-    propertyType: string
+   
 }
 
 export interface FormProps {
@@ -41,5 +39,5 @@ export interface FormProps {
     handleSubmit: FormEventHandler<HTMLFormElement> | undefined,
     handleImageChange: (file) => void,
     onFinishHandler: (data: FieldValues) => Promise<void> | void,
-    propertyImage: { name: string, url: string },
+    image: { name: string, url: string },
 }

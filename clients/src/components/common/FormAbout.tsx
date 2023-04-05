@@ -6,8 +6,6 @@ import {
   TextField,
   TextareaAutosize,
   Stack,
-  Select,
-  MenuItem,
   Button,
 } from '@pankod/refine-mui';
 
@@ -16,7 +14,7 @@ import CustomButton from './CustomButton';
 
 import BackdropLoader from './BackdropLoader';
 
-export default function Form({
+export default function FormAbout({
   type,
   register,
   handleSubmit,
@@ -32,7 +30,7 @@ export default function Form({
         fontSize={26}
         fontWeight={700}
         color='#11142D'>
-        {type} a product
+        {type} a about
       </Typography>
       <Box
         mt={2.5}
@@ -56,28 +54,7 @@ export default function Form({
                 fontSize: 16,
                 color: '#11142D',
               }}>
-              Enter product name
-            </FormHelperText>
-            <TextField
-              fullWidth
-              required
-              id='outlined-basic'
-              color='success'
-              variant='outlined'
-              {...register('title', {
-                required: true,
-              })}
-            />
-          </FormControl>
-          <FormControl>
-            <FormHelperText
-              sx={{
-                fontWeight: 500,
-                margin: '10px 0',
-                fontSize: 16,
-                color: '#11142D',
-              }}>
-              Enter product description
+              Enter a description
             </FormHelperText>
             <TextareaAutosize
               minRows={5}
@@ -111,7 +88,7 @@ export default function Form({
                 fontWeight={500}
                 my='10px'
                 fontSize={16}>
-                Product Photo
+                Upload Image
               </Typography>
               <Button
                 component='label'

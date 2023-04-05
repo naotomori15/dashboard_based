@@ -1,6 +1,8 @@
 import {
   EmailOutlined,
-  Info,
+  Description,
+  ShoppingCartCheckout,
+  BurstMode,
   LocationCity,
   Phone,
   Place,
@@ -32,7 +34,9 @@ export default function AgentCards({
   name,
   email,
   avatar,
-  noOfProperties,
+  noOfProduct,
+  noOfHero,
+  noOfAbout,
 }: AgentCardProp) {
   const { data: currentUser } = useGetIdentity();
   const genereteLink = () => {
@@ -84,7 +88,7 @@ export default function AgentCards({
           <Typography
             fontSize={14}
             color='#808191'>
-            Real-Estate Agent
+            Ads Agent
           </Typography>
         </Stack>
         <Stack
@@ -106,8 +110,16 @@ export default function AgentCards({
             name={'+628967529383'}
           />
           <InfoBar
-            icon={<LocationCity sx={{ color: '#808191' }} />}
-            name={`${noOfProperties} Properties`}
+            icon={<ShoppingCartCheckout sx={{ color: '#808191' }} />}
+            name={`${noOfProduct} Product`}
+          />
+          <InfoBar
+            icon={<BurstMode sx={{ color: '#808191' }} />}
+            name={`${noOfHero} Hero Data`}
+          />
+          <InfoBar
+            icon={<Description sx={{ color: '#808191' }} />}
+            name={`${noOfAbout} About Data`}
           />
         </Stack>
       </Stack>
