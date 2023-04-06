@@ -2,7 +2,6 @@ const Gambling = require('../mongodb/models/gambling.js');
 const dotenv = require('dotenv');
 const cloudinary = require('cloudinary').v2;
 const mongoose = require('mongoose');
-const gambling = require('../mongodb/models/gambling.js');
 
 dotenv.config();
 cloudinary.config({
@@ -31,13 +30,17 @@ module.exports = {
   },
   creataGambling: async (req, res) => {
     try {
-      const { isGambling } = req.body;
+      const { isGambling, photo, url } = req.body;
       // Start a new session...
       const session = await mongoose.startSession();
       session.startTransaction();
-
+      const photoUrl = await cloudinary.uploader.upload(photo, {
+        folder: 'sneaker_db',
+      });
       await Gambling.create({
+        url,
         isGambling,
+        photo: photoUrl.url,
       });
 
       await session.commitTransaction();
@@ -50,12 +53,20 @@ module.exports = {
   editGambling: async (req, res) => {
     try {
       const { id } = req.params;
+      const { isGambling, url, photo } = req.body;
+      const updates = {
+        isGambling,
+        url,
+      };
+      if (photo) {
+        const photoUrl = await cloudinary.uploader.upload(photo);
+        updates.photo = photoUrl.url;
+      }
 
-      const { isGambling } = req.body;
       await Gambling.findByIdAndUpdate(
         { _id: id },
         {
-          isGambling,
+          $set: updates,
         }
       );
       res.status(200).json({ msg: 'Sucess Update Gambling' });

@@ -1,8 +1,18 @@
 import { Add, Edit } from '@mui/icons-material';
 import { useTable } from '@pankod/refine-core';
-import { FormGroup, FormControlLabel, Switch, Stack } from '@pankod/refine-mui';
+import {
+  FormGroup,
+  FormControlLabel,
+  Switch,
+  Stack,
+  Box,
+  Typography,
+  Card,
+  CardMedia,
+  CardContent,
+} from '@pankod/refine-mui';
 import { useNavigate } from '@pankod/refine-react-router-v6';
-import { CustomButton } from 'components';
+import { CustomButton, GamblingCard } from 'components';
 import BackdropLoader from 'components/common/BackdropLoader';
 import CustomErrorComponent from 'components/common/CustomErrorComponent';
 
@@ -52,11 +62,23 @@ export default function AllGambling() {
                       disabled
                     />
                   }
-                  label='isGambling'
+                  label={item.isGambling ? 'ON' : 'OFF'}
                 />
               </FormGroup>
             ))
           : ''}
+      </Stack>
+      <Stack
+        direction='column'
+        display='flex'
+        alignItems='center'
+        mt='12px'>
+        {allGamblings?.map((item) => (
+          <GamblingCard
+            photo={item.photo}
+            url={item.url}
+          />
+        ))}
       </Stack>
     </div>
   );

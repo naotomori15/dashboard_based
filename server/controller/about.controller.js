@@ -68,7 +68,7 @@ module.exports = {
         { _id: id },
         {
           description,
-          photo: photoUrl.url || photo,
+          photo: photoUrl.url,
         }
       );
       res.status(200).json({ msg: 'Sucess Update About' });

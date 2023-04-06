@@ -8,6 +8,8 @@ import ProductCard from './common/ProductCard';
 import TopAgents from './home/TopAgents';
 import HeroCard from './common/HeroCard';
 import FormHero from './common/FormHero';
+import GamblingCard from './common/GamblingCard';
+
 export {
   AgentCards,
   PieChart,
@@ -19,4 +21,5 @@ export {
   TopAgents,
   HeroCard,
   FormHero,
+  GamblingCard,
 };

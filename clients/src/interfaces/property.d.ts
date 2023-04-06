@@ -31,3 +31,8 @@ export interface AboutCardProps {
   description: string,
   photo: string,
 }
+export interface GamblingCardProps {
+
+  url: string,
+  photo: string,
+}
