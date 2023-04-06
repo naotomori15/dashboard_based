@@ -15,7 +15,7 @@ import { FormPropsGambling } from 'interfaces/common';
 import CustomButton from './CustomButton';
 
 import BackdropLoader from './BackdropLoader';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useTable } from '@pankod/refine-core';
 
 export default function FormGambling({
@@ -28,7 +28,7 @@ export default function FormGambling({
   image,
 }: FormPropsGambling) {
   const {
-    tableQueryResult: { data, isLoading, isError },
+    tableQueryResult: { data },
   } = useTable();
   const allGamblings: any = data?.data ?? [];
   const [checked, setChecked] = useState(false);

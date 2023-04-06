@@ -1,16 +1,6 @@
 import { Add, Edit } from '@mui/icons-material';
 import { useTable } from '@pankod/refine-core';
-import {
-  FormGroup,
-  FormControlLabel,
-  Switch,
-  Stack,
-  Box,
-  Typography,
-  Card,
-  CardMedia,
-  CardContent,
-} from '@pankod/refine-mui';
+import { FormGroup, FormControlLabel, Switch, Stack } from '@pankod/refine-mui';
 import { useNavigate } from '@pankod/refine-react-router-v6';
 import { CustomButton, GamblingCard } from 'components';
 import BackdropLoader from 'components/common/BackdropLoader';

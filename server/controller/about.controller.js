@@ -1,5 +1,5 @@
 const User = require('../mongodb/models/user.js');
-const About = require('../mongodb/models/About.js');
+const About = require('../mongodb/models/about.js');
 const dotenv = require('dotenv');
 const cloudinary = require('cloudinary').v2;
 const mongoose = require('mongoose');

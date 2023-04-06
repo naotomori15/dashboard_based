@@ -6,8 +6,6 @@ import {
   TextField,
   TextareaAutosize,
   Stack,
-  Select,
-  MenuItem,
   Button,
 } from '@pankod/refine-mui';
 
