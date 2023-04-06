@@ -16,6 +16,9 @@ import editAbout from './editAbout';
 import createAbout from './createAbout';
 import AboutDetails from './about-details';
 import HeroDetails from './hero-details';
+import EditGambling from './editGambling';
+import AllGambling from './allGambling';
+import CreateGambling from './createGambling';
 
 export {
   Home,
@@ -34,5 +37,8 @@ export {
   agentProfile,
   Agents,
   myProfile,
+  EditGambling,
+  AllGambling,
+  CreateGambling,
   Login,
 };

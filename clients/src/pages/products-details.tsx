@@ -26,9 +26,9 @@ function checkImage(url: any) {
 export default function PropertiDetails() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-  const { data: user } = useGetIdentity();
   const { id } = useParams();
   const { mutate } = useDelete();
+  const { data: user } = useGetIdentity();
   const { queryResult } = useShow();
 
   const { data, isLoading, isError, status } = queryResult;

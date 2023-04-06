@@ -7,6 +7,7 @@ const userRouter = require('./routes/user.routes.js');
 const productRouter = require('./routes/product.routes.js.js');
 const aboutRouter = require('./routes/about.routes.js');
 const heroRouter = require('./routes/hero.routes.js');
+const gamblingRouter = require('./routes/gambling.routes.js');
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/products', productRouter);
 app.use('/api/v1/about', aboutRouter);
 app.use('/api/v1/hero', heroRouter);
+app.use('/api/v1/gambling', gamblingRouter);
 const PORT = 8080;
 const startServer = async () => {
   try {

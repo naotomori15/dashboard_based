@@ -15,6 +15,7 @@ import {
   Description,
   ShoppingCartCheckout,
   BurstMode,
+  Gamepad,
 } from '@mui/icons-material';
 import dataProvider from '@pankod/refine-simple-rest';
 import { MuiInferencer } from '@pankod/refine-inferencer/mui';
@@ -42,6 +43,9 @@ import {
   editAbout,
   AboutDetails,
   HeroDetails,
+  EditGambling,
+  AllGambling,
+  CreateGambling,
 } from 'pages';
 
 const axiosInstance = axios.create();
@@ -162,6 +166,15 @@ function App() {
               create: createAbout,
               edit: editAbout,
               icon: <Description />,
+            },
+            {
+              name: 'gambling',
+              list: AllGambling,
+              create: CreateGambling,
+
+              edit: EditGambling,
+
+              icon: <Gamepad />,
             },
             {
               name: 'agents',

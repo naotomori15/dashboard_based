@@ -41,3 +41,14 @@ export interface FormProps {
     onFinishHandler: (data: FieldValues) => Promise<void> | void,
     image: { name: string, url: string },
 }
+export interface FormPropsGambling {
+    type: string,
+    register: any,
+    formLoading: boolean,
+    handleSubmit: FormEventHandler<HTMLFormElement> | undefined,
+    onFinishHandler: (data: FieldValues) => Promise<void> | void,
+    onFinish: (values: FieldValues) => Promise<void | CreateResponse<BaseRecord> | UpdateResponse<BaseRecord>>,
+
+
+
+}
