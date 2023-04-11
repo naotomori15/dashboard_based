@@ -70,7 +70,7 @@ function App() {
 
       if (profileObj) {
         const response = await fetch(
-          'https://project-01-a5hx.onrender.com/api/v1/users',
+          'https://dashboard-02.onrender.com/api/v1/users',
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -142,7 +142,7 @@ function App() {
       <RefineSnackbarProvider>
         <Refine
           dataProvider={dataProvider(
-            'https://project-01-a5hx.onrender.com/api/v1'
+            'https://dashboard-02.onrender.com/api/v1'
           )}
           notificationProvider={notificationProvider}
           ReadyPage={ReadyPage}
