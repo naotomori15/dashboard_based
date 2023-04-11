@@ -35,7 +35,7 @@ module.exports = {
       const session = await mongoose.startSession();
       session.startTransaction();
       const photoUrl = await cloudinary.uploader.upload(photo, {
-        folder: 'sneaker_db',
+        folder: 'ads_db',
       });
       await Gambling.create({
         url,

@@ -39,7 +39,7 @@ module.exports = {
       if (!user) throw new Error('Users not found');
 
       const photoUrl = await cloudinary.uploader.upload(photo, {
-        folder: 'sneaker_db',
+        folder: 'ads_db',
       });
 
       const newAbout = await About.create({
