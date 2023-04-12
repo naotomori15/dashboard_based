@@ -3,7 +3,6 @@ import { useTable } from '@pankod/refine-core';
 import { Box, Stack, Typography } from '@pankod/refine-mui';
 import { useNavigate } from '@pankod/refine-react-router-v6';
 import { HeroCard, CustomButton } from 'components';
-import AboutCard from 'components/common/AboutCard';
 import BackdropLoader from 'components/common/BackdropLoader';
 import CustomErrorComponent from 'components/common/CustomErrorComponent';
 
