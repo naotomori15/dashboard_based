@@ -70,7 +70,7 @@ function App() {
 
       if (profileObj) {
         const response = await fetch(
-          'https://dashboard-02.onrender.com/api/v1/users',
+          `${process.env.REACT_APP_API_URL}/api/v1/users`,
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -141,9 +141,7 @@ function App() {
       <GlobalStyles styles={{ html: { WebkitFontSmoothing: 'auto' } }} />
       <RefineSnackbarProvider>
         <Refine
-          dataProvider={dataProvider(
-            'https://dashboard-02.onrender.com/api/v1'
-          )}
+          dataProvider={dataProvider(`${process.env.REACT_APP_API_URL}/api/v1`)}
           notificationProvider={notificationProvider}
           ReadyPage={ReadyPage}
           catchAll={<ErrorComponent />}
