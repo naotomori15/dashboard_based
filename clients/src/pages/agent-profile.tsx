@@ -12,7 +12,7 @@ export default function AgentProperties() {
     id: id as string,
   });
   const myProfile = data?.data ?? [];
-  console.log(myProfile);
+
   if (isLoading) return <BackdropLoader isOpen={isLoading} />;
   if (isError) return <CustomErrorComponent />;
   return (

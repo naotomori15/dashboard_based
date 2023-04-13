@@ -16,9 +16,9 @@ import {
   ShoppingCartCheckout,
   BurstMode,
   Gamepad,
+  ColorLens,
 } from '@mui/icons-material';
 import dataProvider from '@pankod/refine-simple-rest';
-import { MuiInferencer } from '@pankod/refine-inferencer/mui';
 import routerProvider from '@pankod/refine-react-router-v6';
 import axios, { AxiosRequestConfig } from 'axios';
 import { ColorModeContextProvider } from 'contexts';
@@ -46,6 +46,9 @@ import {
   EditGambling,
   AllGambling,
   CreateGambling,
+  AllThemes,
+  EditThemes,
+  CreateThemes,
 } from 'pages';
 
 const axiosInstance = axios.create();
@@ -184,6 +187,13 @@ function App() {
               list: Agents,
               show: agentProfile,
               icon: <PeopleAltOutlined />,
+            },
+            {
+              name: 'theme',
+              list: AllThemes,
+              create: CreateThemes,
+              edit: EditThemes,
+              icon: <ColorLens />,
             },
 
             {

@@ -14,7 +14,7 @@ export default function AllAbout() {
   } = useTable();
 
   const allAbout = data?.data ?? [];
-  console.log(allAbout);
+
   if (isLoading) return <BackdropLoader isOpen={isLoading} />;
   if (isError) return <CustomErrorComponent />;
 
