@@ -11,7 +11,7 @@ export default function Agents() {
   if (isLoading) return <BackdropLoader isOpen={isLoading} />;
 
   if (isError) return <CustomErrorComponent />;
-  console.log(allAgents);
+
   return (
     <Box>
       <Typography

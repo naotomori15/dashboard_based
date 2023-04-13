@@ -47,7 +47,7 @@ export default function PropertiDetails() {
     }).then((result: any) => {
       if (result.isConfirmed) {
         setOpen(result.isConfirmed);
-        console.log(open);
+
         mutate(
           {
             resource: 'products',

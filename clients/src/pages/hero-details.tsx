@@ -40,7 +40,7 @@ export default function HeroDetails() {
     }).then((result: any) => {
       if (result.isConfirmed) {
         setOpen(result.isConfirmed);
-        console.log(open);
+
         mutate(
           {
             resource: 'hero',

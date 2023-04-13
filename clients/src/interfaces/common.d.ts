@@ -41,6 +41,15 @@ export interface FormProps {
     onFinishHandler: (data: FieldValues) => Promise<void> | void,
     image: { name: string, url: string },
 }
+export interface FormThemesProps {
+    type: string,
+    register: any,
+    onFinish: (values: FieldValues) => Promise<void | CreateResponse<BaseRecord> | UpdateResponse<BaseRecord>>,
+    formLoading: boolean,
+    handleSubmit: FormEventHandler<HTMLFormElement> | undefined,
+    onFinishHandler: (data: FieldValues) => Promise<void> | void,
+   
+}
 export interface FormPropsGambling {
     type: string,
     register: any,

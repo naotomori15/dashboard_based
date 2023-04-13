@@ -10,7 +10,7 @@ export default function MyProfile() {
     id: user?.userid,
   });
   const myProfile = data?.data ?? [];
-  console.log(myProfile);
+
   if (isLoading) return <BackdropLoader isOpen={isLoading} />;
   if (isError) return <CustomErrorComponent />;
   return (

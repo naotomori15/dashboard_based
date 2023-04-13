@@ -19,6 +19,9 @@ import HeroDetails from './hero-details';
 import EditGambling from './editGambling';
 import AllGambling from './allGambling';
 import CreateGambling from './createGambling';
+import AllThemes from './all-themes';
+import EditThemes from './edit-themes';
+import CreateThemes from './create-themes';
 
 export {
   Home,
@@ -40,5 +43,8 @@ export {
   EditGambling,
   AllGambling,
   CreateGambling,
+  AllThemes,
+  EditThemes,
+  CreateThemes,
   Login,
 };

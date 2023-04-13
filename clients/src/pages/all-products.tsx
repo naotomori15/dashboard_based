@@ -30,7 +30,7 @@ export default function AllProducts() {
   } = useTable();
 
   const allProducts = data?.data ?? [];
-  console.log(allProducts);
+
   const currentFilterValue = useMemo(() => {
     const logicalFilters = filters.flatMap((item) =>
       'field' in item ? item : []

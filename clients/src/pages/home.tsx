@@ -18,7 +18,7 @@ export default function Home() {
     resource: 'products',
   });
   const latestProducts = data?.data ?? [];
-  console.log(latestProducts);
+
   if (isLoading) return <BackdropLoader isOpen={isLoading} />;
   if (isError) return <CustomErrorComponent />;
   return (
