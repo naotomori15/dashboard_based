@@ -1,11 +1,14 @@
-name: 🚀 Deploy on push main
+name: 🚀 Deploy on push server
 
 on:
   push:
     branches:
       - server
 env:
-  NEXT_PUBLIC_API: ${{ secrets.NEXT_PUBLIC_API }}
+  MONGODB_URL: ${{ secrets.MONGODB_URL }}
+  CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+  CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+  CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
 jobs:
   web-deploy:
     name: 🎉 Deploy
@@ -32,7 +35,7 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
           server: ftp.dijaminhoki-ads.site
-          username: vads01api@vads01api.dijaminhoki-ads.site
+          username: vads02api@vads02api.dijaminhoki-ads.site
           password: ${{ secrets.FTP_PASSWORD }}
           exclude: |
             **/.git*
