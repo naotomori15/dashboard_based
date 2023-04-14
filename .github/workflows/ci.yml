@@ -26,8 +26,8 @@ jobs:
 
       - name: 🔨 Build Project
         run: |
-          npm install
-          npm run build
+          /server/npm install
+
       - name: list output folder server
         run: find server/ -print
       - name: 📂 Sync files
