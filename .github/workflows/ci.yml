@@ -3,7 +3,7 @@ name: 🚀 Deploy on push main
 on:
   push:
     branches:
-      - main
+      - server
 env:
   NEXT_PUBLIC_API: ${{ secrets.NEXT_PUBLIC_API }}
 jobs:
@@ -26,7 +26,7 @@ jobs:
 
       - name: 🔨 Build Project
         run: |
-          /server/npm install
+          npm install
 
       - name: list output folder server
         run: find server/ -print
